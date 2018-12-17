@@ -60,8 +60,9 @@ function getPostById(id){
                     type: 'POSTS_GET_BY_ID',
                     payload: resp
                 })
+            }else{
+                history.push('/error')
             }
-            history.push('/error')
         })
     }
 }

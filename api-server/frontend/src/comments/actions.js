@@ -1,4 +1,6 @@
 import * as BackAPI from 'resources/backCommentAPI'
+import {history} from '../containers/App'
+
 
 function voteComment(id, option){
     return (dispatch, getState) => {
@@ -42,10 +44,15 @@ function getAllComments(id) {
 function getCommentById(id){
     return (dispatch) => {
         BackAPI.getComment(id).then( resp => {
-            dispatch({
-                type: 'COMMENTS_GET_BY_ID',
-                payload: resp
-            })
+            console.log(resp)
+            if(resp.id){
+                dispatch({
+                    type: 'COMMENTS_GET_BY_ID',
+                    payload: resp
+                })
+            }else{
+                history.push('/error')
+            }
         })
     }
 }

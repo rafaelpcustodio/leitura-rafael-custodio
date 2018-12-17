@@ -7,7 +7,7 @@ import EditPost from 'components/editpost/pages/EditPost'
 import EditComment from 'components/editcomment/pages/EditComment'
 import CardComponent from '../components/home/components/body/components/CardComponent'
 import ErrorComponent from '../utils/ErrorComponent'
-import createBrowserHistory from 'history'
+import {createBrowserHistory} from 'history'
 
 const history = createBrowserHistory({
     baseUrl:'',
