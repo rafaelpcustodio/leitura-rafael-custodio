@@ -1,4 +1,5 @@
 import * as BackAPI from 'resources/backPostAPI'
+import {history} from '../containers/App'
 
 function votePost(id, option){
     return (dispatch, getState) => {
@@ -54,10 +55,13 @@ function getAllSortedPosts() {
 function getPostById(id){
     return (dispatch) => {
         BackAPI.getPostById(id).then( resp => {
-            dispatch({
-                type: 'POSTS_GET_BY_ID',
-                payload: resp
-            })
+            if(resp.id){
+                dispatch({
+                    type: 'POSTS_GET_BY_ID',
+                    payload: resp
+                })
+            }
+            history.push('/error')
         })
     }
 }
