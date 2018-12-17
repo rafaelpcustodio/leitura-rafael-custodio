@@ -10,7 +10,6 @@ import {  editPostIncrementalCommentCount, getPostById, getAllPosts } from '../.
 class NewComment extends Component {
 
     constructor() {
-        console.log('constructor')
         super()
         this.state = {
             commentPublished: false,
@@ -34,8 +33,6 @@ class NewComment extends Component {
     }
 
     componentDidMount(){
-        console.log('component did mount')
-        console.log(this.props)
         this.props.getPostByIdAction(this.props.match.params.id)
         this.props.initialPostsAction()
     }
@@ -45,15 +42,12 @@ class NewComment extends Component {
     }
 
     submitForm(event) {
-        console.log(this.props.post)
         event.preventDefault()
-        console.log(this.props.post)
         this.props.saveCommentAction(this.state, this.props.match.params.id)
         this.props.editPostIncrementalCommentCount(this.props.match.params.id, this.props.post)
         this.setState({ commentPublished: true })
     }
     render() {
-        console.log('render')
         if (this.state.commentPublished) {
             return (<Redirect to={`/${this.props.match.params.category}/${this.props.match.params.id}`} />)
         } else {
@@ -85,7 +79,6 @@ class NewComment extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log('dispatch')
     return {
         initialPostsAction: () => dispatch(getAllPosts()),
         getPostByIdAction: (id) => dispatch(getPostById(id)),
@@ -95,7 +88,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    console.log('state to props')
     return {
         post: state.posts.post,
         comment: state.comments.value

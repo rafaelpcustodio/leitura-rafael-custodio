@@ -38,7 +38,6 @@ class EditComment extends Component {
     }
 
     componentDidMount(){
-        console.log('component did mount')
         this.props.getCommentByIdAction(this.props.match.params.idComment)
         this.props.initialPostsAction()
     }
@@ -56,18 +55,14 @@ class EditComment extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState){
-        console.log('get derived state from props')
         if(nextProps.comment.author !== undefined){
-            console.log('primeiro if')
             if((prevState.author !== '' && nextProps.comment.author !== prevState.author)
                 || (prevState.body !== '' && nextProps.comment.body !== prevState.body)){
-                console.log('segundo if')
                 return{
                     author:prevState.author,
                     body:prevState.body
                 }
             }
-            console.log('segundo if')
             return{
                 id:nextProps.comment.id,
                 timestamp:nextProps.comment.timestamp,
@@ -82,7 +77,7 @@ class EditComment extends Component {
     }
 
     render(){
-        console.log(this.props)
+        if(this.props.post)
         if (this.state.commentEdited) {
             return (<Redirect to={`/${this.props.match.params.category}/${this.props.match.params.idPost}`} />)
         }else{
@@ -113,7 +108,6 @@ class EditComment extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-    console.log('map dispatch props')
     return {
         initialPostsAction: () => dispatch(getAllPosts()),
         editCommentAction: (id, comment) => dispatch(editComment(id, comment)),

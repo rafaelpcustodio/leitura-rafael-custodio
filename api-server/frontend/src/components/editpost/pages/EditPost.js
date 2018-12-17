@@ -63,8 +63,6 @@ class EditPost extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState){
-        console.log('prev state', prevState)
-        console.log('next props', nextProps)
         if(nextProps.post.title !== undefined){
             if((prevState.title !== '' && nextProps.post.title !== prevState.title)
                 || (prevState.author !== '' && nextProps.post.author !== prevState.author)
