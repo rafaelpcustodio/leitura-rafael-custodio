@@ -9,3 +9,7 @@ libs used on this project (FRONT-END) will be installed if you execute "npm-inst
 * redux-devtools-executor
 * reactstrap
 * history
+
+* to execute:
+* 1-) npm install
+* 2-) npm start
