@@ -8,3 +8,4 @@ libs used on this project (FRONT-END) will be installed if you execute "npm-inst
 -redux-thunk
 -redux-devtools-executor
 -reactstrap
+-history
